@@ -7,9 +7,6 @@ OBJECTS=$(patsubst %.java,%.class,$(SOURCES))
 all:
 	$(JAVAC) $(SOURCES)
 
-run: all
-	$(JAVA) $(TARGET)
-
 clean:
 	rm -f $(OBJECTS)
 

@@ -142,24 +142,9 @@ public class FallRiskAdmin {
 
             String resp = sb.toString();
 
-            System.out.println(resp);
-
             return resp;
         } else {
             return null;
         }
-    }
-
-
-    public static void main(String[] args) throws Exception {
-        FallRiskAdmin admin = new FallRiskAdmin("admin@rit.edu", "secret", true);
-        admin.getToken();
-        UserData[] users = admin.getUserData();
-
-        UserResult[] results = new UserResult[2];
-        results[0] = new UserResult(1234, "result");
-        results[1] = new UserResult(2345, "result");
-
-        admin.postUserResults(results);
     }
 }
