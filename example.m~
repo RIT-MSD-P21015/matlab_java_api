@@ -1,0 +1,44 @@
+clear; clc;
+
+jpath = "/home/pilot/Programs/MSD/matlab_java_api";
+useDev = true;
+email = "admin@rit.edu";
+password = "secret";
+
+javaaddpath(jpath);
+
+admin = FallRiskAdmin(email, password, useDev);
+
+admin.getToken();
+
+users = admin.getUserData();
+
+n = length(users);
+
+results = javaArray('UserResult', n);
+
+% show found users
+fprintf("Found %d users that need to be evaluated.\n", n);
+for i=1:n
+    fprintf("User ID: %d; Email: %s\n", users(i).id, users(i).email);
+    results(i) = UserResult(users(i).id, num2str(rand(1)));
+end
+
+% get test data for users
+numtests = 5;
+for i = 1:n
+    fprintf("Getting tests for User ID: %d", users(i).id);
+    if(users(i).deserializeTestData())
+        for j = 1:numtests
+            
+            accelData = users(i).getSesn
+            
+            varname = strcat('User', num2str(users(i).id), 'Test', num2str(j), 'AccelData');
+            variable.(varname) = 1;
+        end
+    else
+        fprintf("No test data for User ID: %d", users(i).id);
+    end
+end
+
+msg = admin.postUserResults(results);
