@@ -3,6 +3,9 @@ import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.HashMap;
+import java.lang.reflect.Type;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.example.logintest.data.sensors.TestData;
 import com.example.logintest.data.sensors.TestDataManager;
 
@@ -29,6 +32,20 @@ public class UserData {
         LINACCEL,
         ROTDATA,
         STEPCNT
+    }
+
+    public HashMap<String, Integer> getSurveyData() {
+
+        // decode base64 to json string 
+        byte[] data = Base64.getDecoder().decode(survey);
+        String jsonString = new String(data);
+
+        // convert json string to HashMap
+        Gson gson = new Gson();
+        Type type = new TypeToken<HashMap<String, Integer>>(){}.getType();
+        HashMap<String, Integer> map = gson.fromJson(jsonString, type);
+
+        return map;
     }
 
     // returns true on success

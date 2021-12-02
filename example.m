@@ -24,7 +24,24 @@ for i=1:n
     results(i) = UserResult(users(i).id, num2str(rand(1)));
 end
 
-% get test data for users
+%% get survey information from the users
+map = users(1).getSurveyData();
+% possible fields (can be seen in the map)
+% feet, inches
+
+% gender: male=0, female=1, other=2
+
+% age, weight, numFalls: integers
+
+% strokeSide: left=0, right=1, both=2
+
+% parkinsons, walkingAid, trapsFall, hearing, urine, medication
+%   1 for true, 0 for false
+
+% ex/
+map.get('age')
+
+%% get test data for users
 numtests = 5; % number of tests
 
 % these are java to matlab conversions to get enumerator values
