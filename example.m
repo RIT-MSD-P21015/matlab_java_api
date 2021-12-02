@@ -1,7 +1,7 @@
 clear; clc;
 
 jpath = "/home/pilot/Programs/MSD/matlab_java_api";
-useDev = true;
+useDev = false;
 email = "admin@rit.edu";
 password = "secret";
 
@@ -15,13 +15,10 @@ users = admin.getUserData();
 
 n = length(users);
 
-results = javaArray('UserResult', n);
-
 % show found users
 fprintf("Found %d users that need to be evaluated.\n", n);
 for i=1:n
     fprintf("User ID: %d; Email: %s\n", users(i).id, users(i).email);
-    results(i) = UserResult(users(i).id, num2str(rand(1)));
 end
 
 %% get survey information from the users
@@ -101,4 +98,11 @@ end
 % example:
 % TestDataObjects.User7_Test4_AccelData(index).getTimestamp(); 
 
-% msg = admin.postUserResults(results);
+%% send results back to the user
+results = javaArray('UserResult', n);
+% generate a random probability for place holder
+for i=1:n
+    results(i) = UserResult(users(i).id, num2str(rand(1)));
+end
+% this message sends the result to the server
+msg = admin.postUserResults(results);

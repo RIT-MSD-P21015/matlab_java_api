@@ -1,7 +1,7 @@
 clear; clc;
 
 jpath = "/home/pilot/Programs/MSD/matlab_java_api";
-useDev = true;
+useDev = false;
 email = "admin@rit.edu";
 password = "secret";
 
@@ -14,8 +14,6 @@ admin.getToken();
 users = admin.getUserData();
 
 n = length(users);
-
-results = javaArray('UserResult', n);
 
 % show found users
 fprintf("Found %d users that need to be evaluated.\n", n);
@@ -101,4 +99,6 @@ end
 % example:
 % TestDataObjects.User7_Test4_AccelData(index).getTimestamp(); 
 
+%% send results back to the user
+results = javaArray('UserResult', n);
 % msg = admin.postUserResults(results);
