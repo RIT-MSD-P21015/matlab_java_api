@@ -20,4 +20,4 @@ The Matlab script is able to see the sensor data from the phone by serializing a
 * TestData.java
 * TestDataManager.java
 
-Java's serialization library also relies on the 'package' that these classes identify with. To make things simple, the package is essentially the folder that the file resides in. On the phone, these files are under the folder `com/example/logintest/data/sensors/`, so the directory structure was copied in this Matlab project. **If the files change on the phone, they MUST change in this project or the program will NOT work.**
+Java's serialization library also relies on the 'package' that these classes identify with. To make things simple, the package is essentially the folder that the file resides in. On the phone, these files are under the folder `com/example/logintest/data/sensors/`, so the directory structure was copied in this Matlab project. **If the files change on the phone, they MUST match in this project or the program will NOT work.**
