@@ -1,5 +1,7 @@
 # matlab_java_api
 
+A Matlab interface to a Java program to retrieve sensor data from Fall Risk database. 
+
 Matlab Contact: Paul Kelly `pjk2563@rit.edu`
 
 ## How to run
